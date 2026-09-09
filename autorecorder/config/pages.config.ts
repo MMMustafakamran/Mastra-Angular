@@ -225,12 +225,20 @@ export const PAGES = definePages([
         endLine: 31,
       },
     ],
-    // Both halves of the guide in one question: `priority` is agent *state*,
-    // written from the browser; `userName`/`timezone` are read-only *context*.
+    // Both halves of the guide, one per turn: `priority` is agent *state*,
+    // written from the browser; `timezone` is read-only *context*. Three turns,
+    // read in order by actions/shared-state.action.ts — priority after `high` is
+    // written, priority again after `low` is, then the context. Asking the same
+    // question across two different written values is what separates a real read
+    // of agent state from a word echoed out of the question.
     // The earlier "what notes do I have?" was unanswerable -- the notes array is
     // always empty here, so the agent had nothing to be right about.
-    prompt:
-      'Remind me: what is my username, my timezone, and my workspace priority?',
+    prompt: 'What is the priority set to right now?',
+    prompts: [
+      'What is the priority set to right now?',
+      'And now? What is the priority?',
+      'Which timezone am I on?',
+    ],
     waitAfterPromptMs: 4000,
   },
   {

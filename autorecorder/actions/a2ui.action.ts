@@ -62,12 +62,20 @@ async function writeCatalogCodeNote(page: Page): Promise<void> {
 export const runA2uiAction: PageActionHandler = async (
   page: Page,
   config: PageRecordConfig,
+  rootPath: string,
 ) => {
   // First, whose code the catalog snippet is. The demo below shows that no
-  // catalog is registered; this shows why one could not be — and that the
-  // block on the notes route was written here rather than lifted from a guide
-  // that never declares it.
-  if (await showReconstructedCatalogCode(page, config, writeCatalogCodeNote)) {
+  // catalog is registered; this shows why one could not be — and, by opening
+  // the source file itself, that the block was written here rather than lifted
+  // from a guide that never declares it.
+  if (
+    await showReconstructedCatalogCode(
+      page,
+      config,
+      rootPath,
+      writeCatalogCodeNote,
+    )
+  ) {
     await returnToDemo(page, config);
   }
 
