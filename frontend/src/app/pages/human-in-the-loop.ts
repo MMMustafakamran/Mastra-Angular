@@ -46,7 +46,10 @@ import { Callout, Panel, SourceCode, TryIt } from '../components/ui';
               <td class="py-2 pr-4">
                 The backend agent emits an AG-UI interrupt
               </td>
-              <td class="py-2"><code>injectInterrupt</code></td>
+              <td class="py-2">
+                <code>AgentStore.interruptController</code>,
+                <code>injectInterrupt</code>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -99,6 +102,51 @@ import { Callout, Panel, SourceCode, TryIt } from '../components/ui';
         </p>
         <ui-source path="src/app/features/hitl/interrupt-panel.component.ts" />
       </ui-panel>
+
+      <ui-panel heading="The store's own controller">
+        <p class="mb-3 text-sm text-slate-700">
+          The guide's <strong>Handle an interrupt from the store</strong>
+          section: a component that already holds a store reads the pending
+          decision off <code>store().interruptController</code> and needs
+          nothing else. The controller is created and connected with the store
+          and destroyed when the store is torn down.
+        </p>
+        <p class="mb-3 text-sm text-slate-700">
+          Pointed at <code>support</code> rather than the doc's
+          <code>ticketing</code>, which this runtime does not register — and
+          deliberately not at <code>default</code>, which the panel above
+          holds. The guide warns against aiming both controllers at one
+          decision: each observes the agent independently, so the same
+          interrupt would surface twice and two clicks could race to resume it.
+        </p>
+        <ui-source
+          path="src/app/features/hitl/ticket-approval.component.ts"
+        />
+      </ui-panel>
+
+      <ui-callout title="Resolved — the store API shipped four months after the doc described it">
+        <p>
+          Both snippets in that section were unimplementable when it was
+          published on 2026-08-21.
+          <code>&#64;copilotkit/angular&#64;0.3.1</code> — <code>latest</code>
+          until 0.4.0 — declared an <code>AgentStore</code> of only
+          <code>agent</code>, <code>isRunning</code>, <code>messages</code> and
+          <code>state</code>, with no <code>interruptController</code> to read,
+          and an <code>injectInterrupt</code> that took
+          <code>InjectInterruptOptions</code> and no string overload, so the
+          section's <code>injectInterrupt&lt;T&gt;("default")</code> was a type
+          error.
+        </p>
+        <p class="mt-2">
+          <code>0.4.0</code> publishes both:
+          <code>readonly interruptController: InterruptController</code> on the
+          store, and a string-first overload of
+          <code>injectInterrupt</code>. The finding stands as a doc-versus-release
+          ordering defect — the guide carried no version note for either — but
+          it is no longer a live blocker, so both snippets now run here as
+          written.
+        </p>
+      </ui-callout>
     </div>
   `,
 })

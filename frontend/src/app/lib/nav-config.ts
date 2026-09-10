@@ -43,7 +43,7 @@ export interface RouteMeta {
   status: RouteStatus;
   /** Shown in the route header when the status is not plain "working". */
   statusNote?: string;
-  /** Feature requires a CopilotKit Enterprise Intelligence license. */
+  /** Feature requires a CopilotKit Intelligence license. */
   premium?: boolean;
   /**
    * This route owns a live interactive surface, which lives at `<path>/demo`
@@ -86,6 +86,15 @@ export const NAV: NavGroup[] = [
           'The smallest end-to-end path: a MastraAgent bound to the Mastra backend in Copilot Runtime, provideCopilotKit, and one copilot-chat.',
         status: 'working',
       },
+      {
+        path: '/inspector',
+        hasDemo: true,
+        title: 'Inspector',
+        docPath: '/angular/mastra/inspector',
+        summary:
+          'The Inspector @copilotkit/angular mounts for you as of 0.4.0 — nothing to install, nothing to mount, and nothing to retract here.',
+        status: 'working',
+      },
     ],
   },
   {
@@ -107,7 +116,9 @@ export const NAV: NavGroup[] = [
         docPath: '/angular/mastra/guides/frontend-tools-generative-ui',
         summary:
           'A server-side tool call rendered by an Angular component, plus the sandboxed Open Generative UI path.',
-        status: 'working',
+        status: 'partial',
+        statusNote:
+          'All three of the guide’s generative-UI paths are live, including registerComponent, which declares show_incident from the browser with no change to the Mastra agent definition. The new first section runs, and its published snippet is wrong in four ways. It carries no handler, so core writes an empty tool result and the model is always handed a second turn nobody asked for — filler here on gpt-5.4, a false apology on the gpt-4o-mini sibling repos. followUp: false removes it and the guide never mentions followUp. It guards on status "in-progress" while the real status is "executing", so the guard never fires and the card paints empty first. The status never reaches "complete" at all, so the gate-on-complete pattern taught higher up the same page would load forever here. And it ships no CSS, so with Angular’s default preserveWhitespaces the card renders as the run-together string INC-4711sev1. Everything is kept verbatim — see Known issues.',
       },
       {
         path: '/a2ui',
@@ -140,7 +151,7 @@ export const NAV: NavGroup[] = [
           'A decision tool that pauses the run until the user answers, plus a headless interrupt controller.',
         status: 'working',
         statusNote:
-          'The tool path is live. The interrupt panel is mounted but stays idle unless the agent emits an AG-UI interrupt.',
+          'The tool path is live. The interrupt panel is mounted but stays idle unless the agent emits an AG-UI interrupt. The guide’s newer store().interruptController section is not implemented: that member ships in no published @copilotkit/angular build — see Known issues.',
       },
       {
         path: '/shared-state',
@@ -166,7 +177,7 @@ export const NAV: NavGroup[] = [
         status: 'partial',
         premium: true,
         statusNote:
-          'Thread endpoints come from the Enterprise Intelligence Platform. Unlicensed, the list stays empty and the drawer renders its locked state — which is the expected result here.',
+          'Thread endpoints come from the CopilotKit Intelligence Platform. Unlicensed, the list stays empty and the drawer renders its locked state — which is the expected result here.',
       },
       {
         path: '/memory',

@@ -89,7 +89,7 @@ import { Callout, DocSample, Panel, SourceCode, TryIt } from '../components/ui';
       <ui-callout tone="warn" title="Angular support boundaries">
         The guide states two of these as authoritative framework support states
         rather than missing examples: <strong>Hashbrown is unsupported</strong>
-        on Angular 20–22 and must not be added, and the
+        on Angular 22 and must not be added, and the
         <strong>JSON Renderer has no Angular renderer</strong>. A2UI with a
         typed catalog is the documented path for declarative Angular
         interfaces.

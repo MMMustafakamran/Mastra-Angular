@@ -8,46 +8,142 @@ Holds the 3 most recent dated entries. When a change lands on a fourth
 date, the oldest entry is dropped. Entries are counted, not aged, so a gap of
 weeks between changes does not expire anything.
 
-## 2026-08-18
+## 2026-08-30
 
-### 06:58 UTC — 3 pages, highest severity high
+### 13:43 UTC — 2 pages, highest severity low
 
-**High — Frontend tools and generative UI** · _local snapshot edit, not an upstream change_
+**Low — Introduction**
 
-`/angular/mastra/guides/frontend-tools-generative-ui` · route `/frontend-tools-generative-ui` · under “Register a browser tool”
+`/angular/mastra` · routes `/`, `/doc-sync` · under “Open Inspector and confirm setup”
 
-29 code lines, 9 prose lines changed.
-
-````diff
-+ Call `registerFrontendTool` from an Angular injection context. The live
-+ Showcase example builds a typed tool config around a writable signal:
-- 
-+ return {
-+ name: "change_background",
-+ description: "Change the application background to a CSS gradient.",
-+ parameters: z.object({
-+ background: z.string().optional(),
-````
-
-**High — Threads** · _local snapshot edit, not an upstream change_
-
-`/angular/mastra/guides/threads-memory-attachments-headless` · routes `/threads`, `/memory`, `/attachments`, `/headless` · under “Resume a specific thread” · in a `ts` block
-
-2 code lines changed.
+2 prose lines changed.
 
 ````diff
-- 
-+ import { injectThreads } from "@copilotkit/angular";
+- Angular does not mount Inspector by default. First follow [Inspector for Angular](/angular/mastra/inspector). Then, on localhost, click the Inspector button.
++ On localhost, click the Inspector button in the corner of the app.
 ````
 
-**Low — Voice and multimodal input** · _local snapshot edit, not an upstream change_
+**Low — Quickstart**
 
-`/angular/mastra/guides/voice-multimodal` · route `/voice-multimodal` · under “What is voice and multimodal input?”
+`/angular/mastra/quickstart` · route `/quickstart` · under “Open Inspector and confirm setup”
 
-3 prose lines changed.
+2 prose lines changed.
 
 ````diff
-- 
-+ Multimodal input attaches typed image or document content parts to that
-+ message, so a compatible model can reason about more than text.
+- Angular does not mount Inspector by default. First follow [Inspector for Angular](/angular/mastra/inspector). Then, on localhost, click the Inspector button.
++ On localhost, click the Inspector button in the corner of the app.
 ````
+
+---
+
+## 2026-08-26
+
+### 19:51 UTC — 3 pages, highest severity low
+
+**Low — Introduction**
+
+`/angular/mastra` · routes `/`, `/doc-sync` · under “Angular”
+
+8 prose lines changed.
+
+````diff
+- body="Add durable threads, inspection, and managed or self-hosted Enterprise Intelligence without changing the Angular frontend APIs in this guide."
++ body="Add durable threads, inspection, and managed or self-hosted CopilotKit Intelligence without changing the Angular frontend APIs in this guide."
+- - Angular 20, 21, or 22
++ - Angular 22
+- If you don't have one already, pin the CLI to one of the supported majors. This example uses Angular 22:
++ If you don't have one already, pin the CLI to the supported major:
+- - [Enterprise Intelligence](premium/overview): add durable threads, inspection, and cloud-hosted or self-hosted operations.
++ - [CopilotKit Intelligence](premium/overview): add durable threads, inspection, and cloud-hosted or self-hosted operations.
+````
+
+**Low — A2UI schemas, styling, and recovery**
+
+`/angular/mastra/guides/a2ui` · route `/a2ui` · under “Angular support boundaries”
+
+2 prose lines changed.
+
+````diff
+- - **Hashbrown is unsupported.** The stable Hashbrown Angular package does not support the complete Angular 20 through 22 policy.
++ - **Hashbrown is unsupported.** The stable Hashbrown Angular package does not support the Angular 22 policy.
+````
+
+**Low — Quickstart**
+
+`/angular/mastra/quickstart` · route `/quickstart` · under “Angular”
+
+8 prose lines changed.
+
+````diff
+- body="Add durable threads, inspection, and managed or self-hosted Enterprise Intelligence without changing the Angular frontend APIs in this guide."
++ body="Add durable threads, inspection, and managed or self-hosted CopilotKit Intelligence without changing the Angular frontend APIs in this guide."
+- - Angular 20, 21, or 22
++ - Angular 22
+- If you don't have one already, pin the CLI to one of the supported majors. This example uses Angular 22:
++ If you don't have one already, pin the CLI to the supported major:
+- - [Enterprise Intelligence](premium/overview): add durable threads, inspection, and cloud-hosted or self-hosted operations.
++ - [CopilotKit Intelligence](premium/overview): add durable threads, inspection, and cloud-hosted or self-hosted operations.
+````
+
+---
+
+---
+
+## 2026-08-21
+
+### 10:36 UTC — 3 pages, highest severity high
+
+**High — Human-in-the-loop and interrupts**
+
+`/angular/mastra/guides/human-in-the-loop` · route `/human-in-the-loop` · under “Human-in-the-loop and interrupts”
+
+26 code lines, 3 headings, 26 prose lines changed. The number of fenced code blocks changed.
+
+````diff
+- | Interrupt | The backend agent emits an AG-UI interrupt | `injectInterrupt` |
++ | Interrupt | The backend agent emits an AG-UI interrupt | `AgentStore.interruptController`, `injectInterrupt` |
+- ## Handle an interrupt
++ ## Handle an interrupt from the store
++ An interrupt is a state of one conversation: this agent, this thread, this run
++ is waiting for a decision. The store that already exposes that conversation's
++ messages and state exposes its pending interrupt too, so a component that holds
++ a store needs nothing else:
+````
+
+**Medium — Introduction**
+
+`/angular/mastra` · routes `/`, `/doc-sync` · under “Run the backend, runtime, and Angular app”
+
+1 heading, 11 prose lines changed.
+
+````diff
++ <Step>
++ ### Open Inspector and confirm setup
++ 
++ Angular does not mount Inspector by default. First follow [Inspector for Angular](/angular/mastra/inspector). Then, on localhost, click the Inspector button.
++ 
++ 1. Open **Agents**, then **Agent**. Your agent is listed.
++ 2. Send a chat message. Open **Agents**, then **AG-UI Events**. Events are moving.
++ 3. Open **Threads**. The list is unlocked (Intelligence is on), or locked with Enable Intelligence (Intelligence is off).
+````
+
+**Medium — Quickstart**
+
+`/angular/mastra/quickstart` · route `/quickstart` · under “Run the backend, runtime, and Angular app”
+
+1 heading, 11 prose lines changed.
+
+````diff
++ <Step>
++ ### Open Inspector and confirm setup
++ 
++ Angular does not mount Inspector by default. First follow [Inspector for Angular](/angular/mastra/inspector). Then, on localhost, click the Inspector button.
++ 
++ 1. Open **Agents**, then **Agent**. Your agent is listed.
++ 2. Send a chat message. Open **Agents**, then **AG-UI Events**. Events are moving.
++ 3. Open **Threads**. The list is unlocked (Intelligence is on), or locked with Enable Intelligence (Intelligence is off).
+````
+
+---
+
+---

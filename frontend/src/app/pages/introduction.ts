@@ -96,6 +96,24 @@ OpenAI</code></pre>
         </ul>
       </ui-panel>
 
+      <ui-panel heading="Inspector">
+        <p class="text-sm text-slate-700">
+          <code>/angular/mastra</code> and
+          <code>/angular/mastra/quickstart</code> are the same page, so the
+          "Open Inspector and confirm setup" step lands on this route too. As
+          of <code>&#64;copilotkit/angular&#64;0.4.0</code> the package mounts
+          <code>cpk-web-inspector</code> itself, but only inside a running
+          CopilotKit surface and only in dev mode — this notes route has
+          neither, so no button appears here.
+          <a
+            routerLink="/quickstart"
+            class="text-blue-700 underline decoration-dotted"
+            >The Quickstart route</a
+          >
+          carries the step, its three checks, and what was found against them.
+        </p>
+      </ui-panel>
+
       <ui-panel heading="The runtime binding">
         <p class="mb-3 text-sm text-slate-700">
           This is the one file that ties CopilotKit to Mastra. It is read off disk

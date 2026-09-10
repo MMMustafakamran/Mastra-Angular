@@ -63,7 +63,85 @@ import { Callout, Panel, SourceCode, TryIt } from '../components/ui';
         registered agents. The Introduction route probes exactly that.
       </ui-callout>
 
-  
+      <ui-panel heading="5 · Open Inspector and confirm setup">
+        <p class="mb-3 text-sm text-slate-700">
+          The final step no longer routes Angular readers through a manual
+          mount. As published on 2026-08-30 it reads, in full:
+          <em>"On localhost, click the Inspector button in the corner of the
+          app."</em> Nothing here mounts the Inspector — the step is testing
+          that <code>&#64;copilotkit/angular</code> mounts it for you, which
+          landed in <code>0.4.0</code>.
+        </p>
+        <p class="mb-3 text-sm text-slate-700">
+          The button belongs to the running app, not to a notes page, so it
+          appears on <code>/quickstart/demo</code> rather than on this route.
+          The three checks the step then prescribes:
+        </p>
+        <ol
+          class="ml-5 list-decimal space-y-1 text-sm text-slate-700 marker:text-slate-400"
+        >
+          <li>
+            Open <strong>Agents</strong>, then <strong>Agent</strong>. Your
+            agent is listed.
+          </li>
+          <li>
+            Send a chat message. Open <strong>Agents</strong>, then
+            <strong>AG-UI Events</strong>. Events are moving.
+          </li>
+          <li>
+            Open <strong>Threads</strong>. The list is unlocked (Intelligence is
+            on), or locked with Enable Intelligence (Intelligence is off). This
+            repo runs no license key, so <strong>locked is the pass</strong>
+            here — see the Threads route.
+          </li>
+        </ol>
+      </ui-panel>
+
+      <ui-callout
+        tone="warn"
+        title="Finding — the step says “on localhost”; the code says “in dev mode”"
+      >
+        <p>
+          The step conditions the Inspector on <em>localhost</em>. The shipped
+          gate is
+          <code
+            >shouldEnableInspector(&#123; enableInspector, isBrowser,
+            isDevelopment &#125;)</code
+          >, which returns
+          <code>isBrowser &amp;&amp; isDevelopment &amp;&amp; enableInspector
+          !== false</code>
+          — and <code>isDevelopment</code> is Angular's
+          <code>isDevMode()</code>, not a hostname check. A production build
+          served from localhost has no Inspector button at all.
+        </p>
+        <p class="mt-2">
+          Confirmed on this harness at
+          <code>&#64;copilotkit/angular&#64;0.4.0</code> (declared
+          <code>^0.4.0</code>): the
+          <code>cpk-web-inspector</code> element mounts on
+          <code>/quickstart/demo</code> under <code>ng serve</code> and is
+          absent from every route of the built bundle served over
+          <code>http://localhost</code>. This repo ships an SSR production
+          server (<code>npm run serve:ssr:frontend</code>), so a reader
+          following the step against a production build on localhost finds
+          nothing and has no way to tell that from a broken setup.
+        </p>
+      </ui-callout>
+
+      <ui-callout
+        tone="warn"
+        title="Finding — the step is unreachable on the version the previous docs pinned"
+      >
+        The mount landed in <code>&#64;copilotkit/angular&#64;0.4.0</code>.
+        <code>0.3.1</code> — <code>latest</code> on npm until this release, and
+        what this repo declared until the step was reconciled — contains no
+        Inspector code whatsoever. Between the two, the page told Angular
+        readers to click a button their installed package could not render, and
+        the removed line pointed at
+        <code>/angular/mastra/inspector</code> for the manual mount that
+        replaced it. Anyone pinned below <code>0.4.0</code> now reads a step
+        with no fallback and no version note.
+      </ui-callout>
     </div>
   `,
 })

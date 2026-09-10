@@ -1,7 +1,9 @@
 /**
- * Puts the guide's two human-in-the-loop paths side by side: the decision tool
- * (registered by ApprovalToolsService, rendered inside the chat's tool-call
- * flow) and the headless interrupt controller (rendered outside the chat).
+ * Puts the guide's three human-in-the-loop paths side by side: the decision
+ * tool (registered by ApprovalToolsService, rendered inside the chat's
+ * tool-call flow), the headless interrupt controller, and the store's own
+ * controller — the last two rendered outside the chat and pointed at different
+ * agents, as the guide's warning requires.
  * https://docs.copilotkit.ai/angular/mastra/guides/human-in-the-loop
  *
  * Injecting ApprovalToolsService is what constructs it, and construction is
@@ -12,14 +14,16 @@ import { CopilotChat } from '@copilotkit/angular';
 
 import { ApprovalToolsService } from './approval-tools.service';
 import { InterruptPanelComponent } from './interrupt-panel.component';
+import { TicketApprovalComponent } from './ticket-approval.component';
 
 @Component({
   selector: 'app-hitl-chat',
-  imports: [CopilotChat, InterruptPanelComponent],
+  imports: [CopilotChat, InterruptPanelComponent, TicketApprovalComponent],
   providers: [ApprovalToolsService],
   template: `
     <div style="display: flex; flex-direction: column; height: 100%">
       <app-interrupt-panel />
+      <app-ticket-approval />
       <div style="flex: 1; min-height: 0">
         <copilot-chat />
       </div>

@@ -1,0 +1,170 @@
+{
+  "generatedAt": "2026-08-21T11:55:24.098Z",
+  "framework": "Mastra (TypeScript) + Angular",
+  "videoPrefix": "MASTRA-angular",
+  "clips": {
+    "quickstart": {
+      "order": 1,
+      "id": "quickstart",
+      "name": "Quickstart",
+      "file": "MASTRA-angular-01-Quickstart.webm",
+      "sources": [
+        "frontend/package.json",
+        "frontend/src/app/features/quickstart/quickstart-chat.ts",
+        "frontend/server.ts",
+        "backend/src/mastra/agents/index.ts"
+      ],
+      "sourceSha": "80ddca0358a6",
+      "recordedAt": "2026-08-21T10:16:24.394Z",
+      "bytes": 5118682,
+      "sha256": "4f61f3bcd8ac",
+      "status": "new"
+    },
+    "chat-ui": {
+      "order": 2,
+      "id": "chat-ui",
+      "name": "Guides - Chat UI and customization",
+      "file": "MASTRA-angular-02-ChatUi.webm",
+      "sources": [
+        "frontend/src/app/features/chat-ui/chat-ui-demo.component.ts",
+        "frontend/src/app/features/chat-ui/custom-assistant-message.component.ts"
+      ],
+      "sourceSha": "4c36e5f0a35b",
+      "recordedAt": "2026-08-21T10:17:52.810Z",
+      "bytes": 6742003,
+      "sha256": "7c26ea861afe",
+      "status": "new"
+    },
+    "frontend-tools-generative-ui": {
+      "order": 3,
+      "id": "frontend-tools-generative-ui",
+      "name": "Guides - Frontend tools and generative UI",
+      "file": "MASTRA-angular-03-FrontendToolsGenerativeUi.webm",
+      "sources": [
+        "frontend/src/app/features/tools/tools-chat.component.ts",
+        "frontend/src/app/features/tools/weather-card.component.ts"
+      ],
+      "sourceSha": "13374a54472f",
+      "recordedAt": "2026-08-21T10:19:04.634Z",
+      "bytes": 5352673,
+      "sha256": "d4f72177a895",
+      "status": "new"
+    },
+    "a2ui": {
+      "order": 4,
+      "id": "a2ui",
+      "name": "Guides - A2UI schemas, styling, and recovery",
+      "file": "MASTRA-angular-04-A2ui.webm",
+      "sources": [
+        "frontend/src/app/features/a2ui/a2ui-chat.component.ts",
+        "frontend/server.ts"
+      ],
+      "sourceSha": "1c7761b05bc3",
+      "recordedAt": "2026-08-21T10:21:14.866Z",
+      "bytes": 6687028,
+      "sha256": "d0868099cd47",
+      "status": "new"
+    },
+    "voice-multimodal": {
+      "order": 5,
+      "id": "voice-multimodal",
+      "name": "Guides - Voice and multimodal input",
+      "file": "MASTRA-angular-05-VoiceMultimodal.webm",
+      "sources": [
+        "frontend/src/app/features/media/voice-chat.component.ts"
+      ],
+      "sourceSha": "e8b9ebb8ac83",
+      "recordedAt": "2026-08-21T10:22:54.579Z",
+      "bytes": 5773667,
+      "sha256": "71dd2f92e498",
+      "status": "new"
+    },
+    "human-in-the-loop": {
+      "order": 6,
+      "id": "human-in-the-loop",
+      "name": "Guides - Human-in-the-loop and interrupts",
+      "file": "MASTRA-angular-06-HumanInTheLoop.webm",
+      "sources": [
+        "frontend/src/app/features/hitl/approval-tools.service.ts",
+        "frontend/src/app/features/hitl/approval-card.component.ts"
+      ],
+      "sourceSha": "669b8b3a135c",
+      "recordedAt": "2026-08-21T10:23:46.500Z",
+      "bytes": 3049217,
+      "sha256": "b5fd31244668",
+      "status": "new"
+    },
+    "shared-state": {
+      "order": 7,
+      "id": "shared-state",
+      "name": "Guides - Shared state and agent context",
+      "file": "MASTRA-angular-07-SharedState.webm",
+      "sources": [
+        "frontend/src/app/features/shared-state/workspace.component.ts",
+        "frontend/src/app/features/shared-state/account-context.component.ts"
+      ],
+      "sourceSha": "5283701d6dee",
+      "recordedAt": "2026-08-21T11:54:49.133Z",
+      "bytes": 5707024,
+      "sha256": "9eaa93c27bbc",
+      "status": "new"
+    },
+    "threads": {
+      "order": 8,
+      "id": "threads",
+      "name": "Threads",
+      "file": "MASTRA-angular-08-Threads.webm",
+      "sources": [
+        "frontend/src/app/features/threads/thread-list.component.ts",
+        "frontend/src/app/features/threads/threads-demo.component.ts"
+      ],
+      "sourceSha": "3098bf2506f3",
+      "recordedAt": "2026-08-21T10:53:21.832Z",
+      "bytes": 6359930,
+      "sha256": "f5c9aaedde31",
+      "status": "new"
+    },
+    "memory": {
+      "order": 9,
+      "id": "memory",
+      "name": "Memory",
+      "file": "MASTRA-angular-09-Memory.webm",
+      "sources": [
+        "frontend/src/app/features/memory/memory-list.component.ts"
+      ],
+      "sourceSha": "f0f75cc14d0d",
+      "recordedAt": "2026-08-21T10:26:58.610Z",
+      "bytes": 3272043,
+      "sha256": "c7cb20c1cf7b",
+      "status": "new"
+    },
+    "attachments": {
+      "order": 10,
+      "id": "attachments",
+      "name": "Attachments",
+      "file": "MASTRA-angular-10-Attachments.webm",
+      "sources": [
+        "frontend/src/app/features/attachments/media-chat.component.ts"
+      ],
+      "sourceSha": "435db9cba491",
+      "recordedAt": "2026-08-21T10:27:58.147Z",
+      "bytes": 3538819,
+      "sha256": "55f2c6d51f84",
+      "status": "new"
+    },
+    "headless": {
+      "order": 11,
+      "id": "headless",
+      "name": "Headless UI",
+      "file": "MASTRA-angular-11-HeadlessUi.webm",
+      "sources": [
+        "frontend/src/app/features/headless/headless-chat.component.ts"
+      ],
+      "sourceSha": "c1979acf1777",
+      "recordedAt": "2026-08-21T10:28:43.522Z",
+      "bytes": 2972295,
+      "sha256": "c668c506d8fb",
+      "status": "new"
+    }
+  }
+}

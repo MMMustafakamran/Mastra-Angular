@@ -1,0 +1,8 @@
+﻿# Recordings and audio are build/raw media assets, not source code.
+*.webm
+*.mp4
+*.m4a
+*.wav
+*.mp3
+!.gitignore
+RECORD_RESULTS.json
