@@ -300,7 +300,6 @@ carries both the runtime and `ng serve`, prefixed by `concurrently`, and is
 uploaded with the CI artifacts.
 
 **Recorder aborts on preflight** — the app was still doing its first load. The
-warmup step covers the usual routes; a page added to `WARMUP_ROUTES` in
 `lib/config.mjs` gets the same treatment.
 
 **Runtime up, agent silent** — `warmRuntimeEndpoint` hits
