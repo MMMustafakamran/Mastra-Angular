@@ -15,7 +15,6 @@ ci/
 ├── validate-pages.mjs    rejects unknown ids before a run starts
 ├── resolve-selection.mjs expands dispatch checkboxes + ids into a page list
 ├── run-name.mjs          names the run's artifacts (Mastra-angular-18Aug2026-0612UTC)
-├── compare-results.mjs   diffs a run against autorecorder/expected-results.json
 └── lib/
     ├── config.mjs        paths, ports, URLs
     ├── env.mjs           loads the repo-root .env
@@ -23,29 +22,7 @@ ci/
     ├── preflight.mjs     port, credential and warmup checks
     ├── mux.mjs           voiceover muxing (the only implementation)
     ├── report.mjs        RUN_REPORT.md / .json
-    └── signature.mjs     reduces a page result to a comparable signature
 ```
-
-## Result baseline
-
-`autorecorder/expected-results.json` holds the verdict a person signed off on
-for every page: `pass`, or `fail` with an `errorClass` and a normalised
-`message`, plus a `reason`. After every CI run the consolidate job runs
-`compare-results.mjs` over all shards and classifies each page as
-`unchanged`, `new-error`, `resolved`, `error-changed`, `notes-changed`,
-`untracked` or `not-run`. All unchanged → the package is safe to publish
-unseen. Anything else → a `results-changed` issue names the pages.
-
-| Command | What it does |
-|---|---|
-| `npm run results:compare` | Compare `autorecorder/videos/` against the baseline (exit 3 on change) |
-| `npm run results:compare -- --dir <folder>` | Same, over a downloaded package |
-| `npm run results:accept -- --dir <folder>` | Fold the run's changes into the baseline; then edit the `reason` fields |
-| `npm run results:seed` | Write a baseline from scratch (first run only) |
-
-`ignoreNotes` in the baseline is a list of regexes for warnings that carry no
-information (a console line every page logs). The signature drops ports,
-URLs, timings and hex ids before comparing, so only the kind of failure counts.
 
 
 ## Commands
