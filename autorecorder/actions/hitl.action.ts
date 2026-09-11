@@ -10,7 +10,7 @@
 import { type Page } from 'playwright';
 
 import { sendPrompt, waitForAgentResponseCompletion } from '../core/actions';
-import { humanClick, humanGlide, sleep } from '../core/overlays/cursor';
+import { beat, humanClick, humanGlide, sleep } from '../core/overlays/cursor';
 import { type PageActionHandler, type PageRecordConfig } from '../core/types';
 
 export const runHitlAction: PageActionHandler = async (
@@ -37,7 +37,7 @@ export const runHitlAction: PageActionHandler = async (
         'requestApproval, so nothing was paused.',
     );
   } else {
-    await sleep(1500);
+    await beat(1500);
     const approveBtn = page
       .locator('app-approval-card button:has-text("Approve")')
       .first();
