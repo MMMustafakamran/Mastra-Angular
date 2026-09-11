@@ -151,26 +151,6 @@ export const PAGES = definePages([
     waitAfterPromptMs: 4000,
   },
   {
-    id: 'a2ui',
-    name: 'Guides - A2UI schemas, styling, and recovery',
-    videoName: 'A2ui',
-    docPath: 'guides/a2ui',
-    route: 'a2ui',
-    ideFile: 'frontend/src/app/features/a2ui/a2ui-chat.component.ts',
-    startLine: 1,
-    endLine: 22,
-    // `a2ui: {}` on the CopilotRuntime is the whole server-side story.
-    extraTabs: [{ filePath: 'frontend/server.ts', startLine: 29, endLine: 43 }],
-    // Recorded as a documented finding rather than a working demo: the renderer
-    // only registers once `a2ui.catalog` is supplied, and the guide's catalog
-    // snippet is not self-contained. The handler reads the doc and writes the
-    // gaps up in Notepad instead of prompting — see actions/a2ui.action.ts.
-    // The prompt is kept so the entry stays valid and so re-enabling the chat
-    // turn is a one-line change once a catalog exists.
-    prompt: 'Could you show me a card that compares two flight options?',
-    waitAfterPromptMs: 4000,
-  },
-  {
     id: 'voice-multimodal',
     name: 'Guides - Voice and multimodal input',
     videoName: 'VoiceMultimodal',
@@ -225,12 +205,20 @@ export const PAGES = definePages([
         endLine: 31,
       },
     ],
-    // Both halves of the guide in one question: `priority` is agent *state*,
-    // written from the browser; `userName`/`timezone` are read-only *context*.
+    // Both halves of the guide, one per turn: `priority` is agent *state*,
+    // written from the browser; `timezone` is read-only *context*. Three turns,
+    // read in order by actions/shared-state.action.ts — priority after `high` is
+    // written, priority again after `low` is, then the context. Asking the same
+    // question across two different written values is what separates a real read
+    // of agent state from a word echoed out of the question.
     // The earlier "what notes do I have?" was unanswerable -- the notes array is
     // always empty here, so the agent had nothing to be right about.
-    prompt:
-      'Remind me: what is my username, my timezone, and my workspace priority?',
+    prompt: 'What is the priority set to right now?',
+    prompts: [
+      'What is the priority set to right now?',
+      'And now? What is the priority?',
+      'Which timezone am I on?',
+    ],
     waitAfterPromptMs: 4000,
   },
   {
@@ -253,37 +241,6 @@ export const PAGES = definePages([
     // and the drawer renders its locked state — which is the expected result,
     // and what this recording documents. The chat beside it answers normally.
     prompt: 'In one line, what are threads for?',
-    waitAfterPromptMs: 4000,
-  },
-  {
-    id: 'memory',
-    name: 'Memory',
-    videoName: 'Memory',
-    docPath: 'guides/threads-memory-attachments-headless',
-    route: 'memory',
-    ideFile: 'frontend/src/app/features/memory/memory-list.component.ts',
-    startLine: 9,
-    endLine: 30,
-    // isAvailable() is false against this runtime, so the guide's fallback is
-    // what renders. The handler rests on it before prompting the chat beside it.
-    prompt: 'Just so you know for later: I am working on an Angular 22 project.',
-    waitAfterPromptMs: 4000,
-  },
-  {
-    id: 'attachments',
-    name: 'Attachments',
-    videoName: 'Attachments',
-    docPath: 'guides/threads-memory-attachments-headless',
-    route: 'attachments',
-    ideFile: 'frontend/src/app/features/attachments/media-chat.component.ts',
-    startLine: 9,
-    endLine: 23,
-    // Asks for two values that exist only inside the attached image, so a
-    // correct answer is proof the file reached the model. The old
-    // "what types of attachments are supported?" could be answered from the
-    // system prompt alone, which is why a broken upload looked fine on video.
-    prompt:
-      'I attached a chart. What is its title, and what is the Q4 number?',
     waitAfterPromptMs: 4000,
   },
   {

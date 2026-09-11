@@ -21,8 +21,9 @@ ci/
     ├── pages.mjs         reads page ids from the recorder's config
     ├── preflight.mjs     port, credential and warmup checks
     ├── mux.mjs           voiceover muxing (the only implementation)
-    └── report.mjs        RUN_REPORT.md / .json
+    ├── report.mjs        RUN_REPORT.md / .json
 ```
+
 
 ## Commands
 
@@ -252,6 +253,14 @@ prepare ────┼─ Worker 2/3 ─┼─→ consolidate-recordings
 version-watch.yml
 version-watch          (separate workflow, no dependency either way)
 ```
+
+`versions` resolves the npm dependency trees once (lockfile-free installs of
+`frontend/` and `autorecorder/`) and shares them through a run-scoped cache.
+Each worker restores that cache and runs `automate.mjs --use-lockfile` against
+the fresh lockfiles, so all three shards record against one resolution and skip
+the minutes of re-resolving. A cache miss (`versions` red or skipped) falls back
+to resolving in the worker. `backend/` is not part of the shared cache -- the
+`versions` job never installs it -- so each worker resolves it as before.
 
 ## Artifact names
 

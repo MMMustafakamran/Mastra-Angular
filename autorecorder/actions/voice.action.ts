@@ -43,7 +43,7 @@
 import { type Page } from 'playwright';
 
 import { sendPrompt, waitForAgentResponseCompletion } from '../core/actions';
-import { humanClick, humanGlide, sleep } from '../core/overlays/cursor';
+import { beat, humanClick, humanGlide, sleep } from '../core/overlays/cursor';
 import { type PageActionHandler, type PageRecordConfig } from '../core/types';
 
 import { attachFixtureOnCamera, renderRevenueFixture } from './attach-file';
@@ -146,7 +146,7 @@ export const runVoiceAction: PageActionHandler = async (
 
   const msgCount = await sendPrompt(page, config.prompt);
   await waitForAgentResponseCompletion(page, config.waitAfterPromptMs ?? 4000, msgCount);
-  await sleep(1200);
+  await beat(1200);
 
   // ── Half two: the microphone, which records and then cannot transcribe ────
   const origin = new URL(page.url()).host;
@@ -236,7 +236,7 @@ export const runVoiceAction: PageActionHandler = async (
     );
 
     await humanGlide(page, micBox.x - 120, micBox.y + micBox.height / 2, 20);
-    await sleep(4000);
+    await beat(4000);
 
     // Stopping is what posts the audio for transcription -- i.e. what fails.
     if (recording) {
@@ -246,7 +246,7 @@ export const runVoiceAction: PageActionHandler = async (
         await humanGlide(page, stopBox.x + stopBox.width / 2, stopBox.y + stopBox.height / 2, 20);
         await sleep(400);
         await humanClick(page);
-        await sleep(3000);
+        await beat(3000);
       }
     }
   }
@@ -263,5 +263,5 @@ export const runVoiceAction: PageActionHandler = async (
     'the reply are real.',
   ]);
   await closeNotepadNote(page);
-  await sleep(800);
+  await beat(800);
 };
