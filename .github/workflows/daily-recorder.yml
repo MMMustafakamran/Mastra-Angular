@@ -198,6 +198,7 @@ jobs:
           exit 0
 
       - name: Open or update the drift issue
+        continue-on-error: true
         if: steps.check.outputs.state == 'drift' && github.event_name == 'schedule'
         uses: actions/github-script@v7
         with:
@@ -623,6 +624,7 @@ jobs:
           fi
 
       - name: Open or update the results issue
+        continue-on-error: true
         if: steps.compare.outputs.verdict == 'changed'
         uses: actions/github-script@v7
         with:
@@ -664,6 +666,7 @@ jobs:
       # the time it ran. RESULT_DIFF.{json,md} ride along so the download script
       # can print one verdict per repo without opening anything.
       - name: Upload Consolidated Demo Recordings Package
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ${{ needs.prepare.outputs.run_name }}
