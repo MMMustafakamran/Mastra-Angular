@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "project": "Mastra-angular",
+  "updatedAt": "2026-09-11",
+  "source": "Tested-Report.md 2026-09-11 (Angular Guides table) + CI package 2026-09-11 shard 1/3",
+  "note": "Seeded from the consolidated 2026-09-11 package, which held a single RUN_REPORT.json covering shard 1/3 only (the three shards overwrote each other before the shard-suffix step existed). The remaining pages will be added as `untracked` by the first CI run after this change; review them and fold them in with `node ci/compare-results.mjs --dir <package> --accept`.",
+  "ignoreNotes": [
+    "net::ERR_ABORTED",
+    "Thread count unchanged"
+  ],
+  "pages": {
+    "a2ui": {
+      "status": "pass",
+      "reason": "DISAGREES with Tested-Report (❌ Missing snippets) — review"
+    },
+    "chat-ui": {
+      "status": "pass",
+      "reason": "Tested-Report 2026-09-11: ✅"
+    },
+    "frontend-tools-generative-ui": {
+      "status": "pass",
+      "reason": "Tested-Report 2026-09-11: ✅ (register component: no CSS rendered)",
+      "notes": [
+        "Weather card heading rendered empty -- the argument names in the renderer do not match the tool call"
+      ]
+    },
+    "quickstart": {
+      "status": "pass",
+      "reason": "Tested-Report 2026-09-11: ✅ (Quickstarts: Angular ✅ (v1.71))"
+    }
+  }
+}

@@ -15,14 +15,38 @@ ci/
 ├── validate-pages.mjs    rejects unknown ids before a run starts
 ├── resolve-selection.mjs expands dispatch checkboxes + ids into a page list
 ├── run-name.mjs          names the run's artifacts (Mastra-angular-18Aug2026-0612UTC)
+├── compare-results.mjs   diffs a run against autorecorder/expected-results.json
 └── lib/
     ├── config.mjs        paths, ports, URLs
     ├── env.mjs           loads the repo-root .env
     ├── pages.mjs         reads page ids from the recorder's config
     ├── preflight.mjs     port, credential and warmup checks
     ├── mux.mjs           voiceover muxing (the only implementation)
-    └── report.mjs        RUN_REPORT.md / .json
+    ├── report.mjs        RUN_REPORT.md / .json
+    └── signature.mjs     reduces a page result to a comparable signature
 ```
+
+## Result baseline
+
+`autorecorder/expected-results.json` holds the verdict a person signed off on
+for every page: `pass`, or `fail` with an `errorClass` and a normalised
+`message`, plus a `reason`. After every CI run the consolidate job runs
+`compare-results.mjs` over all shards and classifies each page as
+`unchanged`, `new-error`, `resolved`, `error-changed`, `notes-changed`,
+`untracked` or `not-run`. All unchanged → the package is safe to publish
+unseen. Anything else → a `results-changed` issue names the pages.
+
+| Command | What it does |
+|---|---|
+| `npm run results:compare` | Compare `autorecorder/videos/` against the baseline (exit 3 on change) |
+| `npm run results:compare -- --dir <folder>` | Same, over a downloaded package |
+| `npm run results:accept -- --dir <folder>` | Fold the run's changes into the baseline; then edit the `reason` fields |
+| `npm run results:seed` | Write a baseline from scratch (first run only) |
+
+`ignoreNotes` in the baseline is a list of regexes for warnings that carry no
+information (a console line every page logs). The signature drops ports,
+URLs, timings and hex ids before comparing, so only the kind of failure counts.
+
 
 ## Commands
 
@@ -252,6 +276,14 @@ prepare ────┼─ Worker 2/3 ─┼─→ consolidate-recordings
 version-watch.yml
 version-watch          (separate workflow, no dependency either way)
 ```
+
+`versions` resolves the npm dependency trees once (lockfile-free installs of
+`frontend/` and `autorecorder/`) and shares them through a run-scoped cache.
+Each worker restores that cache and runs `automate.mjs --use-lockfile` against
+the fresh lockfiles, so all three shards record against one resolution and skip
+the minutes of re-resolving. A cache miss (`versions` red or skipped) falls back
+to resolving in the worker. `backend/` is not part of the shared cache -- the
+`versions` job never installs it -- so each worker resolves it as before.
 
 ## Artifact names
 
