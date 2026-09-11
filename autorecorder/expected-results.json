@@ -13,6 +13,10 @@
       "status": "pass",
       "reason": "DISAGREES with Tested-Report (❌ Missing snippets) — review"
     },
+    "attachments": {
+      "status": "pass",
+      "reason": "accepted from run on 2026-09-11 (untracked)"
+    },
     "chat-ui": {
       "status": "pass",
       "reason": "Tested-Report 2026-09-11: ✅"
@@ -24,9 +28,45 @@
         "Weather card heading rendered empty -- the argument names in the renderer do not match the tool call"
       ]
     },
+    "headless": {
+      "status": "pass",
+      "reason": "accepted from run on 2026-09-11 (untracked)"
+    },
+    "human-in-the-loop": {
+      "status": "fail",
+      "reason": "PROVISIONAL: recorded 2026-09-11 while the OpenAI account had no credits (agent silent everywhere); re-verify after topping up | accepted from run on 2026-09-11 (untracked)",
+      "errorClass": "Agent Silent",
+      "message": "Agent never produced a response within <n> -- no assistant message ever received content. Check the backend and the browser console output above."
+    },
+    "inspector": {
+      "status": "pass",
+      "reason": "accepted from run on 2026-09-11 (untracked)"
+    },
+    "memory": {
+      "status": "pass",
+      "reason": "accepted from run on 2026-09-11 (untracked)"
+    },
     "quickstart": {
       "status": "pass",
       "reason": "Tested-Report 2026-09-11: ✅ (Quickstarts: Angular ✅ (v1.71))"
+    },
+    "shared-state": {
+      "status": "fail",
+      "reason": "PROVISIONAL: recorded 2026-09-11 while the OpenAI account had no credits (agent silent everywhere); re-verify after topping up | accepted from run on 2026-09-11 (untracked)",
+      "errorClass": "Agent Silent",
+      "message": "Agent never produced a response within <n> -- no assistant message ever received content. Check the backend and the browser console output above."
+    },
+    "threads": {
+      "status": "fail",
+      "reason": "PROVISIONAL: recorded 2026-09-11 while the OpenAI account had no credits (agent silent everywhere); re-verify after topping up | accepted from run on 2026-09-11 (untracked)",
+      "errorClass": "Agent Silent",
+      "message": "Agent never produced a response within <n> -- no assistant message ever received content. Check the backend and the browser console output above."
+    },
+    "voice-multimodal": {
+      "status": "fail",
+      "reason": "PROVISIONAL: recorded 2026-09-11 while the OpenAI account had no credits (agent silent everywhere); re-verify after topping up | accepted from run on 2026-09-11 (untracked)",
+      "errorClass": "Agent Silent",
+      "message": "Agent never produced a response within <n> -- no assistant message ever received content. Check the backend and the browser console output above."
     }
   }
 }
