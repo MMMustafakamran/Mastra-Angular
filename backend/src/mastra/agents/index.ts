@@ -20,7 +20,7 @@ export const myAgent = new Agent({
   id: "myAgent",
   name: "My Agent",
   instructions: "You are a helpful assistant!",
-  model: openai("gpt-5.4"),
+  model: openai("gpt-5.6-luna"),
   tools: {
     getWeather,
   },
