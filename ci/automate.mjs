@@ -306,12 +306,15 @@ async function main() {
 
       installNodeDeps(FRONTEND_DIR, 'Installing Frontend Dependencies');
       installNodeDeps(RECORDER_DIR, 'Installing Autorecorder Dependencies');
-
-      // Written here, after the installs and before anything is recorded, so
-      // the file the Quickstart clip puts on screen names the versions this
-      // run actually resolved rather than the ranges package.json declares.
-      console.log(`  📌 ${writeVersionsFile()}`);
     }
+
+    // Outside the install block on purpose. VERSIONS.md is gitignored, so a
+    // CI checkout never carries one, and --skip-install -- the normal path
+    // once a shard restores stage 2's resolved trees -- used to skip this
+    // along with the installs. The Quickstart clip then filmed the recorder
+    // fallback, '// File not found', instead of the versions. This reads
+    // node_modules and uv.lock, both present on either path.
+    console.log(`  📌 ${writeVersionsFile()}`);
 
     // 4. Server — skipped when the ports are already being served.
     // One command, both processes — so either port being held means this
