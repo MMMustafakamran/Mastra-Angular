@@ -16,8 +16,8 @@
  *
  *   1. No handler means core writes an empty tool result, so the model is always
  *      given a second turn it was never asked for. What it puts there depends
- *      on the model: this repo's gpt-5.6-luna emits filler ("Here it is."), while
- *      the gpt-5.6-luna repos turn it into a false apology contradicting the
+ *      on the model: this repo's gpt-5.4-mini emits filler ("Here it is."), while
+ *      the gpt-5.4-mini repos turn it into a false apology contradicting the
  *      card above it. `followUp: false` removes the turn entirely; the guide
  *      never mentions `followUp`.
  *   2. The snippet guards on `status === "in-progress"`. The real status while

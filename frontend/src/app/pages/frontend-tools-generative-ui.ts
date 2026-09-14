@@ -40,7 +40,7 @@ import { Callout, DocSample, Panel, SourceCode, TryIt } from '../components/ui';
           with the id in bold and the severity beside it.
           <strong>Then look underneath it:</strong> a second assistant message
           appears that you never asked for — filler here, a false apology on the
-          gpt-5.6-luna sibling repos. That extra turn is the finding: the
+          gpt-4o-mini sibling repos. That extra turn is the finding: the
           registration has no <code>handler</code>, so core writes an empty tool
           result and the model always gets another turn.
         </p>
@@ -84,9 +84,9 @@ import { Callout, DocSample, Panel, SourceCode, TryIt } from '../components/ui';
             The registration carries no <code>handler</code>, so core writes an
             empty tool result and the model is always handed another turn. What
             it puts there depends on the model. This repo's
-            <code>gpt-5.6-luna</code> emits filler — <em>"Here it is."</em> — under a
+            <code>gpt-5.4-mini</code> emits filler — <em>"Here it is."</em> — under a
             card that already said everything. The sibling repos on
-            <code>gpt-5.6-luna</code> get a false apology instead:
+            <code>gpt-5.4-mini</code> get a false apology instead:
             <em>"It seems there was an issue retrieving the details for incident
             INC-4711…"</em>, directly contradicting the correct card above it.
             <br /><br />

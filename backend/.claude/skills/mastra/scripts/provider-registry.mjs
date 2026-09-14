@@ -36,7 +36,7 @@ function loadRegistry() {
 
 /**
  * Extract version numbers from a model name for sorting.
- * Returns an array of numeric segments, e.g. "gpt-5.6-luna" → [5, 4].
+ * Returns an array of numeric segments, e.g. "gpt-5.4-mini" → [5, 4].
  * Handles dot-separated (3.5), hyphen-separated (3-7), and mixed formats.
  * Models without detectable version numbers return null.
  */
