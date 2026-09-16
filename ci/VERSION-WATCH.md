@@ -1,6 +1,6 @@
 # Version Watch — scenario and rationale
 
-Implemented by `ci/check-versions.mjs` and `.github/workflows/version-watch.yml`.
+Implemented by `ci/check-versions.mjs`.
 
 ## The scenario
 

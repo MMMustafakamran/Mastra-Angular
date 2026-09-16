@@ -265,7 +265,7 @@ See [`autorecorder/README.md`](autorecorder/README.md) for the full contract.
 
 [`ci/`](ci/README.md) drives the whole thing — doc-drift check, preflight,
 dependency install, both servers, recording and report — from a single Node
-process, and is what the nightly GitHub Actions workflow runs:
+process:
 
 ```bash
 npm run automate                              # everything, all pages
@@ -321,7 +321,7 @@ just one of them is actionable here:
 
 `@copilotkit/angular` exact-pins `@copilotkit/core`, and Angular 22 requires
 `typescript >=6.0 <6.1` — so TypeScript reads a full major behind and must stay
-there. The nightly publishes this report on its own; see
+there. `node ci/check-versions.mjs` publishes this report on its own; see
 [`ci/VERSION-WATCH.md`](ci/VERSION-WATCH.md).
 
 ### Then bump, on a branch

@@ -1,8 +1,6 @@
 # `ci/` — the recording pipeline
 
-Everything that builds, starts, checks and records this repo lives here. The
-only piece outside this folder is `.github/workflows/daily-recorder.yml`, because
-GitHub requires that path.
+Everything that builds, starts, checks and records this repo lives here.
 
 ## Layout
 
