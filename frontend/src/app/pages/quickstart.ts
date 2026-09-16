@@ -149,7 +149,7 @@ export default class QuickstartPage {
   protected readonly builtInAgentSample = `const runtime = new CopilotRuntime({
   agents: {
     default: new BuiltInAgent({
-      model: "openai:gpt-5-mini",
+      model: "openai:gpt-5.4-mini",
       prompt: "You are a helpful assistant for an Angular app.",
     }),
   },

@@ -84,9 +84,9 @@ import { Callout, DocSample, Panel, SourceCode, TryIt } from '../components/ui';
             The registration carries no <code>handler</code>, so core writes an
             empty tool result and the model is always handed another turn. What
             it puts there depends on the model. This repo's
-            <code>gpt-5.4</code> emits filler — <em>"Here it is."</em> — under a
+            <code>gpt-5.4-mini</code> emits filler — <em>"Here it is."</em> — under a
             card that already said everything. The sibling repos on
-            <code>gpt-4o-mini</code> get a false apology instead:
+            <code>gpt-5.4-mini</code> get a false apology instead:
             <em>"It seems there was an issue retrieving the details for incident
             INC-4711…"</em>, directly contradicting the correct card above it.
             <br /><br />
